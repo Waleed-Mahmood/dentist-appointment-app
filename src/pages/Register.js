@@ -28,7 +28,7 @@ const Register = () => {
 
         try {
             await registerUser(formData);
-            navigate("/login"); // Redirect to login after successful signup
+            navigate("/"); // Redirect to login after successful signup
         } catch (err) {
             setError(err);
         } finally {

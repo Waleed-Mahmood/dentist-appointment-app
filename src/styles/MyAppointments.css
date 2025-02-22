@@ -1,42 +1,118 @@
+/* General Styling */
 .appointments-container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .appointments-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .appointment-card {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    position: relative;
-  }
-  
-  .appointment-card h3 {
-    margin: 0 0 10px;
-    font-size: 1.4em;
-  }
-  
-  .appointment-card p {
-    margin: 5px 0;
-    font-size: 1em;
-  }
-  
-  .status {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-top: 10px;
-  }
-  
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #f8fbff;
+  border-radius: 12px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.appointments-container h2 {
+  color: #002b5e;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* Appointments List */
+.appointments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Appointment Card */
+.appointment-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 10px solid;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  text-align: left;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+}
+
+.appointment-card:hover {
+  transform: scale(1.02);
+}
+
+/* Dentist & Clinic Info */
+.appointment-header {
+  margin-bottom: 10px;
+}
+.canceled-status {
+  color: red;
+  font-weight: bold;
+}
+
+.pending-status {
+  color: orange;
+  font-weight: bold;
+}
+
+
+.dentist-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #003366;
+}
+
+.clinic-name {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Appointment Details */
+.appointment-details p {
+  font-size: 16px;
+  margin: 4px 0;
+}
+
+/* Status Badge */
+.status-badge {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 5px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: white;
+}
+
+/* Status Styling */
+.confirmed {
+  border-left-color: #28a745; /* Green */
+}
+
+.confirmed .status-badge {
+  background-color: #28a745;
+}
+
+.pending {
+  border-left-color: #ffc107; /* Yellow */
+}
+
+.pending .status-badge {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.canceled {
+  border-left-color: #dc3545; /* Red */
+}
+
+.canceled .status-badge {
+  background-color: #dc3545;
+}
+
+/* No Appointments Message */
+.no-appointments {
+  font-size: 18px;
+  color: #555;
+  margin-top: 20px;
+}

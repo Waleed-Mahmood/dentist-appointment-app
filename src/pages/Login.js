@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../api/api";
-import "../styles/Login.css"; // Updated CSS file
+import { AuthContext } from "../context/AuthContext";
+import "../styles/Login.css";
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({
-    username: "",
-    password: "",
-  });
-
+  const { login } = useContext(AuthContext);
+  const [credentials, setCredentials] = useState({ username: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -23,13 +21,12 @@ const Login = () => {
     setError("");
 
     try {
-      const response = await loginUser(credentials); // Ensure this API call returns the correct data
-
-      if (response && response.user_id) {
-        localStorage.setItem("user_id", response.user_id); // Store user_id
+      const response = await loginUser(credentials);
+      if (response && response.user.user_id) {
+        login(response.user.user_id); // Updates AuthContext state
         navigate("/home"); // Redirect after successful login
       } else {
-        throw new Error("Invalid response from server"); // Ensure error is thrown if response is not as expected
+        throw new Error("Invalid response from server");
       }
     } catch (err) {
       setError(err.message || "Login failed. Please try again.");
@@ -37,7 +34,6 @@ const Login = () => {
       setLoading(false);
     }
   };
-
 
   return (
     <div className="login-container">

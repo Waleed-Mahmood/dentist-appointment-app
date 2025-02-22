@@ -12,10 +12,10 @@ const fetchData = async (endpoint) => {
     try {
         console.log(`Fetching from: ${BASE_URL}/${endpoint}`); // Debug log
         const response = await api.get(endpoint);
-        return response.data; // Return the JSON response
+        return response.data;
     } catch (error) {
         console.error(`API Fetch Error: ${error.response?.status} - ${error.response?.statusText || error.message}`);
-        return null; // Return null in case of an error
+        return null;
     }
 };
 
@@ -52,15 +52,40 @@ export const getDentists = async () => fetchData("/get-dentists");
 
 export const getDentistServices = async (dentistId) => fetchData(`/get-dentist-services/${dentistId}`);
 
+// Store Appointment Preferences
+export const storeAppointmentPreferences = async (appointmentData) => {
+    try {
+        console.log(appointmentData);
+        const response = await api.post("/store-appointment-preferences", appointmentData);
+        console.log("Appointment Preferences Stored:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error Storing Preferences:", error.response?.data || error.message);
+        throw error.response?.data?.message || "Failed to store appointment preferences.";
+    }
+};
 
+// Book Appointment
+export const bookAppointment = async (appointmentData) => {
+    try {
+        const response = await api.post("/book-appointment", appointmentData);
+        console.log("Appointment Booked:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error Booking Appointment:", error.response?.data || error.message);
+        throw error.response?.data?.message || "Failed to book appointment.";
+    }
+};
 
-
-export const fetchUserAppointments = async () => {
-    return [
-        { id: 1, dentist_id: 1, appointment_date: "2025-02-15", appointment_time: "10:30 AM", appointment_status: "Confirmed" },
-        { id: 2, dentist_id: 2, appointment_date: "2025-02-14", appointment_time: "02:00 PM", appointment_status: "Pending" },
-        { id: 3, dentist_id: 1, appointment_date: "2025-02-16", appointment_time: "09:00 AM", appointment_status: "InProgress" }
-    ];
+// Get User Appointments
+export const fetchUserAppointments = async (userId) => {
+    try {
+        const response = await api.get(`/get-user-appointment/${userId}`);
+        return response.data;
+    } catch (error) {
+        console.error("Error Fetching Appointments:", error.response?.data || error.message);
+        return [];
+    }
 };
 
 export default api;
