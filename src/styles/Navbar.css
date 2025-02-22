@@ -1,0 +1,123 @@
+/* Navbar Container */
+.navbar {
+    background-color: rgba(0, 68, 204, 0.9); /* Semi-transparent background */
+    backdrop-filter: blur(8px); /* Adds a subtle blur effect */
+    padding: 15px 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Adds depth */
+}
+
+/* Navbar Inner Container */
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Logo */
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+/* Individual Links */
+.nav-links li {
+    display: inline-block;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #0033aa;
+}
+
+/* Mobile Menu Icon */
+.menu-icon {
+    font-size: 32px; /* Increased size */
+    cursor: pointer;
+    display: none;
+    padding: 10px; /* Added padding for better touch area */
+    color: white; /* Ensuring it's visible */
+}
+
+/* Login Button */
+.login-btn {
+    background-color: white;
+    color: #0044cc !important;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.login-btn:hover {
+    background-color: #ffffffcc;
+}
+
+/* Enhancing Mobile Visibility */
+@media screen and (max-width: 768px) {
+    .menu-icon {
+        display: block;
+        font-size: 40px; 
+        padding: 25px; /* More space around the icon */
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 112px;
+        right: 30px;
+        background: white;
+        width: 250px; /* Slightly larger menu */
+        padding: 20px;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+        border-radius: 12px;
+        transition: all 0.3s ease-in-out; /* Smooth dropdown */
+    }
+
+    .nav-links.open {
+        display: flex;
+        transform: translateY(5px);
+    }
+
+    .nav-links a {
+        color: #0044cc;
+        padding: 14px;
+        display: block;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .login-btn {
+        background-color: #0044cc;
+        color: white !important;
+        padding: 12px 18px;
+        font-size: 18px;
+        border-radius: 8px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,124 @@
+/* Overall Page Styling */
+.services-container {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f4faff;
+  min-height: 100vh;
+}
+
+/* Page Title */
+.page-title {
+  font-size: 2rem;
+  color: #0044cc;
+  margin-bottom: 20px;
+}
+
+/* Search Bar */
+.search-bar {
+  width: 90%;
+  max-width: 400px;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border 0.3s ease-in-out;
+  display: block;
+  margin: 0 auto 30px;
+}
+
+.search-bar:focus {
+  border-color: #0044cc;
+  outline: none;
+  box-shadow: 0px 0px 10px rgba(0, 68, 204, 0.3);
+}
+
+/* Grid Layout for Services */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  align-items: stretch;
+  padding: 0 20px;
+}
+
+/* Service Card */
+.service-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+
+  /* Ensuring all cards have the same height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+}
+
+.service-card:hover{
+transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Service Name */
+.service-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+/* Service Description */
+.service-description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/* View Dentists Button */
+.view-details-btn {
+  background: linear-gradient(135deg, #0073e6, #0044cc);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  margin-top: auto; /* Ensures button stays at the bottom */
+}
+
+.view-details-btn:hover {
+  background: #005bb5;
+  transform: scale(1.05);
+}
+
+/* Loading & Error Text */
+.loading-text,
+.error-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: red;
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .services-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 500px) {
+  .search-bar {
+      width: 100%;
+  }
+
+  .service-card {
+      min-height: auto;
+  }
+}

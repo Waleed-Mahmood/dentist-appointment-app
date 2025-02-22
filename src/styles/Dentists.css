@@ -1,0 +1,117 @@
+.dentists-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 28px;
+  color: #1e3a8a;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  width: 60%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Grid Layout for Dentist Cards */
+.dentist-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-content: center;
+}
+
+.dentist-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dentist-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dentist-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1e3a8a;
+}
+
+.experience, .speciality, .clinic-name {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Services Section (Updated to Ensure Visibility) */
+.services-section {
+  margin-top: 10px;
+  overflow: visible;
+}
+
+.service-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.service-tab {
+  background: #3b82f6;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  white-space: nowrap;
+  border: 1px solid transparent; /* Added for debugging */
+}
+
+.no-services {
+  font-size: 14px;
+  color: #999;
+}
+
+.appointment-btn {
+  background: #3b82f6;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: auto;
+  transition: background 0.3s ease;
+}
+
+.appointment-btn:hover {
+  background: #2563eb;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 900px) {
+  .dentist-grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .dentist-grid {
+      grid-template-columns: repeat(1, 1fr);
+  }
+}
