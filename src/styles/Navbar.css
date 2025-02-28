@@ -77,8 +77,13 @@
     background-color: #ffffffcc;
 }
 
+
+
 /* Enhancing Mobile Visibility */
 @media screen and (max-width: 768px) {
+    .navbar {
+        padding: 10px 15px; /* Reduce padding to make it shorter */
+    }
     .menu-icon {
         display: block;
         font-size: 40px; 

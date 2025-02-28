@@ -5,7 +5,8 @@ import "../styles/Register.css";
 
 const Register = () => {
     const [formData, setFormData] = useState({
-        full_name: "",
+        first_name: "",
+        last_name: "",
         username: "",
         phone_number: "",
         age: "",
@@ -28,7 +29,7 @@ const Register = () => {
 
         try {
             await registerUser(formData);
-            navigate("/"); // Redirect to login after successful signup
+            navigate("/");
         } catch (err) {
             setError(err);
         } finally {
@@ -42,7 +43,9 @@ const Register = () => {
                 <h2>Register</h2>
                 {error && <p className="error-text">{error}</p>}
                 <form onSubmit={handleSubmit}>
-                    <input type="text" name="full_name" placeholder="Full Name" required onChange={handleChange} />
+                    <input type="text" name="first_name" placeholder="First Name" required onChange={handleChange} />
+                    <input type="text" name="last_name" placeholder="Last Name" required onChange={handleChange} />
+
                     <input type="text" name="username" placeholder="Username" required onChange={handleChange} />
                     <input type="tel" name="phone_number" placeholder="Phone Number" required onChange={handleChange} />
                     <input type="number" name="age" placeholder="Age" required onChange={handleChange} />

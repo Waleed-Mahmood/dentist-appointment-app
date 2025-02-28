@@ -22,9 +22,9 @@ const Login = () => {
 
     try {
       const response = await loginUser(credentials);
-      if (response && response.user.user_id) {
-        login(response.user.user_id); // Updates AuthContext state
-        navigate("/home"); // Redirect after successful login
+      if (response && response.user_id) {
+        login(response.user_id);
+        navigate("/home");
       } else {
         throw new Error("Invalid response from server");
       }

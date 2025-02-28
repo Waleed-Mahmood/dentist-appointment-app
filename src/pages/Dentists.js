@@ -4,14 +4,19 @@ import api from "../api/api";
 import "../styles/Dentists.css";
 
 const Dentists = () => {
-    const { service_id } = useParams(); // Extract service_id from URL
+    const { service_id } = useParams();
     const [dentists, setDentists] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
+    const userId = localStorage.getItem("user_id");
+
     useEffect(() => {
+        if (!userId) {
+            navigate("/");
+        }
         const fetchDentistsAndServices = async () => {
             try {
                 let dentistResponse;
@@ -22,9 +27,7 @@ const Dentists = () => {
                 }
 
                 const dentistsData = dentistResponse.data;
-                console.log("Fetched Dentists:", dentistsData); // Debugging
-
-                // Fetch services for each dentist in parallel
+                // console.log("Fetched Dentists:", dentistsData);
                 const dentistsWithServices = await Promise.all(
                     dentistsData.map(async (dentist) => {
                         try {
@@ -49,7 +52,7 @@ const Dentists = () => {
         };
 
         fetchDentistsAndServices();
-    }, [service_id]);
+    }, [userId, navigate, service_id]);
 
     const filteredDentists = dentists.filter((dentist) =>
         dentist.dentist_name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -59,6 +62,7 @@ const Dentists = () => {
     if (error) return <p className="error">{error}</p>;
 
     return (
+
         <div className="dentists-container">
             <h2>{service_id ? "Dentists for Selected Service" : "Find a Dentist"}</h2>
             <input
@@ -78,6 +82,7 @@ const Dentists = () => {
                                 {dentist.years_of_experience} years of experience
                             </p>
                             <p className="speciality">{dentist.dentist_speciality}</p>
+                            <p className="dentist-contact">Contact: {dentist.dentist_phone_number}</p>
                             <p className="clinic-name">{dentist.dentist_clinic}</p>
 
                             <div className="services-section">

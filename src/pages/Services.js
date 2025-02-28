@@ -12,8 +12,11 @@ const Services = () => {
   const navigate = useNavigate();
 
 
-
+  const userId = localStorage.getItem("user_id");
   useEffect(() => {
+    if (!userId) {
+      navigate("/");
+    }
     const fetchServices = async () => {
       try {
         const response = await api.get("/get-services");
@@ -26,7 +29,7 @@ const Services = () => {
       }
     };
     fetchServices();
-  }, []);
+  }, userId, navigate, []);
 
   const handleSearch = (e) => {
     const query = e.target.value.toLowerCase();

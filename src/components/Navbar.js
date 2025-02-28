@@ -10,7 +10,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/"); // Redirect to login page
+    navigate("/");
   };
 
   return (
@@ -20,12 +20,11 @@ const Navbar = () => {
           🦷 Dental Appointment
         </Link>
 
-        {/* Mobile Menu Icon */}
+
         <div className="menu-icon" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? "✖" : "☰"}
         </div>
 
-        {/* Nav Links */}
         <ul className={isOpen ? "nav-links open" : "nav-links"}>
           {userId && (
             <>
@@ -36,7 +35,7 @@ const Navbar = () => {
             </>
           )}
 
-          {/* Show "Logout" if user is logged in, otherwise show "Login" */}
+
           {userId ? (
             <li><button className="login-btn" onClick={handleLogout}>Logout</button></li>
           ) : (

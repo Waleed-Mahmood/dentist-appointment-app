@@ -52,7 +52,7 @@ const MyAppointments = () => {
             <h2>My Appointments</h2>
 
             <div className="appointments-list">
-                {/* ✅ If user is not logged in */}
+
                 {!user_id ? (
                     <div className="unavailable_appointment-container">
                         <h2>Appointments Unavailable</h2>
