@@ -94,18 +94,19 @@ const Appointment = () => {
         patient_gender: patientGender.trim(),
         patient_email_address: patientEmail.trim(),
         patient_phone_number: patientPhone.trim(),
-        relation: description.trim(),
-        special_notes: notes.trim(),
-        file: file || null,
+        ...(description.trim() && { relation: description.trim() }),
+        ...(notes.trim() && { special_notes: notes.trim() }),
+        ...(file && { file }),
       };
 
       console.log("Sending Data to API:", requestData); // Debugging log
 
-      for (const [key, value] of Object.entries(requestData)) {
-        if (value === "" || value === undefined || value === null) {
-          throw new Error(`Missing required field: ${key}`);
-        }
-      }
+      //if all fileds are required!! is uncomment krna
+      // for (const [key, value] of Object.entries(requestData)) {
+      //   if (value === "" || value === undefined || value === null) {
+      //     throw new Error(`Missing required field: ${key}`);
+      //   }
+      // }
 
       const preferenceResponse = await storeAppointmentPreferences(requestData);
 
@@ -248,7 +249,7 @@ const Appointment = () => {
 
 
           <div className="problem-notes-card">
-            <label>Relation with Patient</label>
+            <label>Relation with Patient (optional)</label>
             <textarea
               placeholder="Describe your Relation..."
               value={description}
